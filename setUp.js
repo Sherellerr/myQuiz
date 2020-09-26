@@ -1,48 +1,90 @@
 import allQuest from './myQuestions.js'
 
-    const startButton = document.getElementById ('start-btn')
+    const startButton = document.getElementById ('start')
+    const nextButton = document.getElementById ('next')
+
+
     const questionContainElement = document.getElementById 
     ('question-contain') 
-
-    const questionElement = document.getElementById('question')
-    const answerButtonsElement = document.getElementById ('answer-buttons')
+    const questionElement = document.getElementById('questions')
+    const answerButtonsElement = document.getElementById ('answerbuttons')
 
     let currentQuestion
 
     startButton.addEventListener ('click', startQuiz)
-
+    nextButton.addEventListener ('click', () => {
+        currentQuestion++
+        nextQuestion ()
+    })
 
     function startQuiz (){
         console.log ('started')
-        currentQuestion = 0 
-        nextQuestion ()
+        startButton.classList.add('hide')
+        currentQuestion = 0
+        questionContainElement.classList.remove('hide')
+        nextQuestion()
     }
 
-    function nextQuestion (){
-        showQuestion (currentQuestion)
+    function nextQuestion(){
+        resetState()
+        showQuestion(allQuest [0])
     }
 
     function showQuestion (question) {
         questionElement.innerText = question.question 
-        question.answer.forEach (answer => {
-            const button = document.createElement ('button')
+        question.answer.forEach(answer => {
+            const button= document.createElement('button')
             button.innerText = answer.text
             button.classList.add ('btn')
             if (answer.correct) {
                 button.dataset.correct = answer.correct
             }
-            button.addEventListener ('click', selectAnswer)
-            answerButtonsElement.appendChild (button)
+            button.addEventListener('click',selectAnswer)
+            answerButtonsElement.appendChild(button)
         })
+       
+    }
+
+    function resetState(){
+        nextButton.classList.add('hide')
+        while (answerButtonsElement.firstChild){
+            answerButtonsElement.removeChild
+            (answerButtonsElement.firstChild)
+        }
+    }
+    function selectAnswer (s){
+        const selectedButton = s.target
+        const correct = selectedButton.dataset.correct
+        setStatusClass (document.body, correct)
+        Array.from (answerButtonsElement.children).forEach (button => {
+            setStatusClass (button, button.dataset.correct)
+        })
+        if (allQuest.length > currentQuestion +1 ) {
+            nextButton.classList.remove ('hide')
+         } else {
+             startButton.innerText = 'Restart'
+             startButton.classList.remove ('hide')
+         }
+    }
+
+    function setStatusClass (element, correct) {
+        cleanStatusClass (element)
+        if (correct) {
+            element.classList.add ('correct')
+        } else {
+            element.classList.add ('wrong')
+        }
+
     }
 
 
-    function selectAnswer (){
+    function cleanStatusClass (element) {
+      
+            element.classList.remove ('correct')
+            element.classList.remove ('wrong')
+        }
 
-    }
-
-
-
+    
 
 
 

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="setUp.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="module" src="setUp.js"></script>
+        
+        <title>Music Quiz</title>
+        <link rel="stylesheet" href="stylequiz.css">
 
-    
-    
-    <title>Music Quiz</title>
-</head>
-<body>
-    <div class = "quiz-contain">
-        <div id = "question-contain" class = "hide"> </div> </div>
-        <div id = "question">Questions</div>
-        <div id = "answer-buttons" class = "btn-grid">
-            <button class = "btn">Answer 1  </button>
-            <button class = "btn">Answer 2  </button>
-            <button class = "btn">Answer 3  </button>
-            <button class = "btn">Answer 4  </button>
+    </head>
 
+    <body>
+        <div class = "start-contain">
+            
+                <h1>Get Yo Quiz On! </h1> 
+                <button id="start" class= "start btn "> Start </button>
+                <button id="next" class= "next btn hide"> Next </button>
+         
         </div>
-       
-        <div class=" controls">
-            <button id= "start-btn" class= "start-btn btn">Start</button>
-            <button id= "next-btn" class= "next-btn btn hide">Next</button>
 
+        <div class= "quiz-contain">
+            <div id = "question-contain" class ="hide">
+                <div id = "questions"> Answer This Question </div>
+                    <div id = "answerbuttons" class = "btn-grid">
+                        <button class = "btn">Answer 1  </button>
+                        <button class = "btn">Answer 2  </button>
+                        <button class = "btn">Answer 3  </button>
+                    </div>
+            </div>
         </div>
-    </div>
 
-
-</body>
+    </body>
 </html>
 
 
