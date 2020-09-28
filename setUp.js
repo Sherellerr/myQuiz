@@ -27,7 +27,7 @@ import allQuest from './myQuestions.js'
 
     function nextQuestion(){
         resetState()
-        showQuestion(allQuest [0])
+        showQuestion(allQuest[currentQuestion])
     }
 
     function showQuestion (question) {
